@@ -13,6 +13,7 @@ const Input = () => {
     } else {
       setIsError(false);
     }
+    setNum("");
   };
 
   const submitHandler = (event: React.FormEvent) => {
