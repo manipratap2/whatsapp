@@ -5,7 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #128c7e;
+  /* background-color: #128c7e; */
+  background: lightblue url("./assets/whatsapp.jpg") no-repeat fixed;
+  background-size: cover;
 }
 
 .input {
@@ -17,13 +19,15 @@ body {
   text-align: center;
   align-content: center;
   max-width: 40rem;
+  color: white;
+  position: relative;
 }
 
 .input label {
   font-size: large;
   font-weight: bold;
   letter-spacing: 0.5px;
-  margin: 1rem;
+  margin: 2rem;
   white-space: normal;
 }
 
@@ -34,10 +38,14 @@ body {
   border-radius: 20px;
   transition: all 0.1s ease-out;
   text-align: center;
+  border: none;
+  outline: none;
 }
 
 .input input:focus {
   border-radius: 10px;
+  border: none;
+  outline: none;
 }
 
 button {
@@ -47,6 +55,7 @@ button {
   text-align: center;
   align-content: center;
   justify-content: center;
+  outline: none;
 
   background-color: #25d366; /* Green */
   border: none;
@@ -60,11 +69,36 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+button:hover,
+button:focus {
   background-color: #1a9949;
+  color: white;
   border-radius: 10px;
+  outline: none;
+  transition: all 0.1s ease-out;
 }
 
 button:disabled {
   background-color: #ff7676;
+}
+
+button:active {
+  box-shadow: 0 5px #1a9949;
+  transform: translateY(4px);
+  outline: none;
+}
+
+p {
+  background: crimson;
+  padding: 5px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  border-radius: 5px;
 }
