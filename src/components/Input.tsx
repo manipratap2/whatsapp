@@ -32,7 +32,7 @@ const Input = () => {
         type="text"
         id="text"
         value={num}
-        placeholder="Enter number with country code"
+        placeholder="+919999999999"
         onChange={inputHandler}
       />
       <button disabled={isError ? true : false}>Chat</button>
