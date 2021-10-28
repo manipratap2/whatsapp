@@ -13,7 +13,6 @@ const Input = () => {
     } else {
       setIsError(false);
     }
-    setNum("");
   };
 
   const submitHandler = (event: React.FormEvent) => {
@@ -22,6 +21,7 @@ const Input = () => {
       return;
     }
     window.location.href = `https://api.whatsapp.com/send/?phone=${num}&app_absent=0`;
+    setNum("");
   };
 
   return (
