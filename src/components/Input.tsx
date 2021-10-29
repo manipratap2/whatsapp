@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 const Input = () => {
   const [num, setNum] = useState("");
   const [isError, setIsError] = useState(false);
   const [isEmpty, setIsEmpty] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const inputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setIsEmpty(false);
@@ -21,6 +22,7 @@ const Input = () => {
     event.preventDefault();
     if (num.trim().length === 0) {
       setIsEmpty(true);
+      inputRef.current?.focus();
       return;
     }
     window.location.href = `https://api.whatsapp.com/send/?phone=${num}&app_absent=0`;
@@ -40,6 +42,8 @@ const Input = () => {
         value={num}
         placeholder="+919999999999"
         onChange={inputHandler}
+        className={isEmpty ? "error" : ""}
+        ref={inputRef}
       />
       <button disabled={isError ? true : false}>Chat</button>
     </form>
