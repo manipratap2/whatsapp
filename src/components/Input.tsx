@@ -20,12 +20,25 @@ const Input = () => {
 
   const submitHandler = (event: React.FormEvent) => {
     event.preventDefault();
+
     if (num.trim().length === 0) {
       setIsEmpty(true);
       inputRef.current?.focus();
       return;
     }
-    window.location.href = `https://api.whatsapp.com/send/?phone=${num}&app_absent=0`;
+
+    let splitNum: number[] = [];
+
+    for (let i = 0; i < num.length; i += 1) {
+      splitNum.push(+num.charAt(i));
+    }
+    if (splitNum[0] === 0 && splitNum[1] === 0) {
+      splitNum.splice(0, 2);
+    }
+    let newNum = splitNum.join("");
+    newNum.replace("+", "");
+
+    window.location.href = `https://api.whatsapp.com/send/?phone=${newNum}&app_absent=0`;
     setNum("");
     setIsEmpty(false);
   };
