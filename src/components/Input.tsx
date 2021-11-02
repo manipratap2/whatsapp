@@ -38,7 +38,10 @@ const Input = () => {
     let newNum = splitNum.join("");
     newNum.replace("+", "");
 
-    window.location.href = `https://api.whatsapp.com/send/?phone=${newNum}&app_absent=0`;
+    let url = `https://api.whatsapp.com/send/?phone=${newNum}&app_absent=0`;
+
+    // window.location.href = url;
+    window.open(url, "_blank")?.focus();
     setNum("");
     setIsEmpty(false);
   };
