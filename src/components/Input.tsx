@@ -40,13 +40,13 @@ const Input = () => {
     }
     if (splitNum[0] === 0 && splitNum[1] === 0) {
       splitNum.splice(0, 2);
+    } else if (isNaN(splitNum[0])) {
+      splitNum.splice(0, 1);
     }
     let newNum = splitNum.join("");
-    newNum.replace("+", "");
 
     let url = `https://api.whatsapp.com/send/?phone=${newNum}&app_absent=0`;
 
-    // window.location.href = url;
     window.open(url, "_self")?.focus();
     setNum("");
     setIsEmpty(false);
