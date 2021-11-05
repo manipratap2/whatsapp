@@ -1,29 +1,20 @@
 // import { Profiler } from "react";
+import { useEffect } from "react";
+import ReactGA from "react-ga";
+
 import Input from "./components/Input";
 
 function App() {
-  // const someCallback = (
-  //   id: string,
-  //   phase: "mount" | "update",
-  //   actualDuration: number,
-  //   baseDuration: number,
-  //   startTime: number,
-  //   commitTime: number
-  // ) => {
-  //   console.log("****************************");
-  //   console.log("Id is " + id);
-  //   console.log("phase is " + phase);
-  //   console.log("actualDuration is " + actualDuration);
-  //   console.log("baseDuration is " + baseDuration);
-  //   console.log("startTime is " + startTime);
-  //   console.log("commitTime is " + commitTime);
-  //   console.log("");
-  // };
+  useEffect(() => {
+    ReactGA.initialize("UA-208211686-3");
+
+    //to report page view
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
+
   return (
     <div>
-      {/* <Profiler id="input" onRender={someCallback}> */}
       <Input />
-      {/* </Profiler> */}
     </div>
   );
 }

@@ -4,10 +4,12 @@ const Input = () => {
   const [num, setNum] = useState("");
   const [isError, setIsError] = useState(false);
   const [isEmpty, setIsEmpty] = useState(false);
+  const [isShort, setIsShort] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const inputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setIsEmpty(false);
+    setIsShort(false);
     setNum(event.target.value);
     const regex: RegExp = /[^0-9+]/g;
 
@@ -23,6 +25,10 @@ const Input = () => {
 
     if (num.trim().length === 0) {
       setIsEmpty(true);
+      inputRef.current?.focus();
+      return;
+    } else if (num.trim().length <= 6) {
+      setIsShort(true);
       inputRef.current?.focus();
       return;
     }
@@ -41,9 +47,11 @@ const Input = () => {
     let url = `https://api.whatsapp.com/send/?phone=${newNum}&app_absent=0`;
 
     // window.location.href = url;
-    window.open(url, "_blank")?.focus();
+    window.open(url, "_self")?.focus();
     setNum("");
     setIsEmpty(false);
+    setIsError(false);
+    setIsShort(false);
   };
 
   return (
@@ -51,12 +59,12 @@ const Input = () => {
       <label htmlFor="text">WhatsApp chat without saving number</label>
       {isError && <p>Enter a valid number</p>}
       {isEmpty && <p>Field cannot be blank</p>}
-
+      {isShort && <p>Field value is too short</p>}
       <input
         type="text"
         id="text"
         value={num}
-        placeholder="+919999999999"
+        placeholder="Enter number with country code"
         onChange={inputHandler}
         className={isEmpty ? "error" : ""}
         ref={inputRef}
