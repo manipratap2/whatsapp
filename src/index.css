@@ -48,32 +48,32 @@ body {
 }
 
 .error {
+  background: salmon;
   animation: input 0.8s ease-in-out forwards;
+  transition: all 0.2s ease-in-out;
+}
+.error::placeholder {
+  color: #ffffff;
+  transition: color 0.2s ease-in-out;
 }
 
 @keyframes input {
   0% {
-    border: 1px solid red;
     border-radius: 10px;
   }
   20% {
-    border: 1px solid red;
     border-radius: 20px;
   }
   40% {
-    border: 1px solid red;
     border-radius: 10px;
   }
   60% {
-    border: 1px solid red;
     border-radius: 20px;
   }
   80% {
-    border: 1px solid red;
     border-radius: 10px;
   }
   100% {
-    border: 1px solid red;
     border-radius: 10px;
   }
 }
