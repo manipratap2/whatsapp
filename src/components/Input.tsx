@@ -69,7 +69,7 @@ const Input = () => {
         className={isEmpty ? "error" : ""}
         ref={inputRef}
       />
-      <button disabled={isError ? true : false}>Chat</button>
+      <button disabled={isError || isEmpty || isShort ? true : false}>Chat</button>
     </form>
   );
 };
