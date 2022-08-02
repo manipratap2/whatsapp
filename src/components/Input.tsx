@@ -10,7 +10,7 @@ const Input = () => {
   const inputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setIsEmpty(false);
     setIsShort(false);
-    setNum(event.target.value);
+    setNum(event.target.value.trim());
     const regex: RegExp = /[^0-9+]/g;
 
     if (regex.test(event.target.value)) {
@@ -61,7 +61,7 @@ const Input = () => {
       {isEmpty && <p>Field cannot be blank</p>}
       {isShort && <p>Field value is too short</p>}
       <input
-        type="text"
+        type="tel"
         id="text"
         value={num}
         placeholder="Enter number with country code"
@@ -69,7 +69,9 @@ const Input = () => {
         className={isEmpty ? "error" : ""}
         ref={inputRef}
       />
-      <button disabled={isError || isEmpty || isShort ? true : false}>Chat</button>
+      <button disabled={isError || isEmpty || isShort ? true : false}>
+        Chat
+      </button>
     </form>
   );
 };
