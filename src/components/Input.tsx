@@ -8,12 +8,13 @@ const Input: React.FC = () => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const inputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const num = event.target.value.replace(/ /g, "");
+    setNum(num);
     setIsEmpty(false);
     setIsShort(false);
-    setNum(event.target.value.trim());
     const regex: RegExp = /[^0-9+]/g;
 
-    if (regex.test(event.target.value)) {
+    if (regex.test(num)) {
       setIsError(true);
     } else {
       setIsError(false);
@@ -43,7 +44,7 @@ const Input: React.FC = () => {
     } else if (isNaN(splitNum[0])) {
       splitNum.splice(0, 1);
     }
-    let newNum = splitNum.join("");
+    let newNum = splitNum.join("").replace(/ /g, "");
 
     let url = `https://api.whatsapp.com/send/?phone=${newNum}&app_absent=0`;
 
