@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 
-const Input = () => {
+const Input: React.FC = () => {
   const [num, setNum] = useState("");
   const [isError, setIsError] = useState(false);
   const [isEmpty, setIsEmpty] = useState(false);

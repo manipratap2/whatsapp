@@ -48,12 +48,12 @@ body {
 }
 
 .error {
-  background: salmon;
+  background: #fff;
   animation: input 0.8s ease-in-out forwards;
   transition: all 0.2s ease-in-out;
 }
 .error::placeholder {
-  color: #ffffff;
+  color: red;
   transition: color 0.2s ease-in-out;
 }
 
